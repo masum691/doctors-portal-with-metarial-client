@@ -7,6 +7,7 @@ import flouride from '../../../images/fluoride.png'
 import cavity from '../../../images/cavity.png'
 import whitening from '../../../images/whitening.png'
 import Service from '../Service/Service';
+import Typography from '@mui/material/Typography';
 
 
 
@@ -32,14 +33,20 @@ const Services = () => {
     return (
         <Box sx={{ flexGrow: 1 }}>
             <Container>
-            <Grid container spacing={{ xs: 4, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
-                {
-                    services.map(service => <Service
-                    key={service.name}
-                    service={service}
-                    ></Service>)
-                }
-            </Grid>
+                <Typography sx={{ textAlign: 'center', fontWeight: 'bold', fontFamily: 'Monospace', marginTop: '50px', color: 'info.main', mt: 4 }} variant="h4" component="div">
+                    Our Service
+                </Typography>
+                <Typography sx={{ textAlign: 'center', fontWeight: 'bold', mt: 2, mb: 5 }} variant="h4" component="div">
+                   Service we provide
+                </Typography>
+                <Grid container spacing={{ xs: 4, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+                    {
+                        services.map(service => <Service
+                            key={service.name}
+                            service={service}
+                        ></Service>)
+                    }
+                </Grid>
             </Container>
         </Box>
     );

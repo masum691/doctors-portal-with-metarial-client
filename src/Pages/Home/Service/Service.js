@@ -1,10 +1,12 @@
 import React from 'react';
+import Grid from '@mui/material/Grid';
 
-const Service = () => {
+const Service = ({service}) => {
+    const [name, desc, img ] = service;
     return (
-        <div>
-            <h1>This is service</h1>
-        </div>
+        <Grid item xs={4} sm={4} md={4}>
+            
+        </Grid>
     );
 };
 

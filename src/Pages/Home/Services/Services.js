@@ -40,11 +40,12 @@ const Services = () => {
         <Box sx={{ flexGrow: 1 }}>
             <Container>
             <Grid container spacing={{ xs: 4, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
-                {services.map((_, index) => (
-                    <Grid item xs={4} sm={4} md={4} key={index}>
-                        <Service>xs=2</Service>
-                    </Grid>
-                ))}
+                {
+                    services.map(service => <Service
+                    key={service.name}
+                    service={service}
+                    ></Service>)
+                }
             </Grid>
             </Container>
         </Box>

@@ -10,7 +10,8 @@ const appoinmentBg = {
     background: `url(${appoinment})`,
     marginTop: '120px',
     backgroundColor: 'rgba(2, 11, 20, 0.663)',
-    backgroundBlendMode: 'darken'
+    backgroundBlendMode: 'darken',
+    width: '100%'
 }
 
 const AppoinmentBanner = () => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import AppoinmentBanner from '../AppoinmentBanner/AppoinmentBanner';
+import AppoinmentBanner from '../../Appoinment/AppoinmentBanner/AppoinmentBanner';
 import Banner from '../Banner/Banner';
 import Services from '../Services/Services';
 

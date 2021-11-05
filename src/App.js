@@ -3,6 +3,7 @@ import './App.css';
 import Appoinment from './Pages/Appoinment/Appoinment/Appoinment';
 import Home from './Pages/Home/Home/Home';
 import Login from './Pages/Home/Login/Login/Login';
+import Register from './Pages/Home/Login/Register/Register';
 import NotFound from './Pages/NotFound/NotFound';
 import Footer from './Pages/Shared/Footer/Footer';
 import Navbar from './Pages/Shared/Navbar/Navbar';
@@ -24,6 +25,9 @@ function App() {
           </Route>
           <Route path="/login">
             <Login></Login>
+          </Route>
+          <Route path="/register">
+            <Register></Register>
           </Route>
           <Route path="*">
             <NotFound></NotFound>

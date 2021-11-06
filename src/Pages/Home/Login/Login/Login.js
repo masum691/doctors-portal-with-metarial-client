@@ -3,12 +3,15 @@ import React, {useState} from 'react';
 import loginImg from '../../../../images/login.png'
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useHistory } from 'react-router-dom';
 import useAuth from '../../../../hooks/useAuth';
 
 const Login = () => {
     const [loginData, setLoginData] = useState({});
-    const [user, isLoading, loginUser, error] = useAuth();
+    const {user, isLoading, loginUser, error} = useAuth();
+    const location = useLocation()
+    const history = useHistory();
+
     const handleOnChange = e => {
         const field = e.target.name;
         const value = e.target.value;
@@ -18,7 +21,7 @@ const Login = () => {
         setLoginData(newLoginData);
     }
     const handleLogin = e => {
-        loginUser(loginData.email, loginData.password)
+        loginUser(loginData.email, loginData.password, location, history)
         e.preventDefault()
     }
     return (

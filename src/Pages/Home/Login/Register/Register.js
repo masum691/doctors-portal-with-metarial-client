@@ -1,12 +1,15 @@
-import { Container, Grid, Button } from '@mui/material';
+import { Container, Grid, Button, CircularProgress } from '@mui/material';
 import React, { useState } from 'react';
 import loginImg from '../../../../images/login.png'
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import { Link } from 'react-router-dom';
+import useAuth from '../../../../hooks/useAuth';
 
 const Register = () => {
     const [loginData, setLoginData] = useState({});
+    const { registerUser, isLoading } = useAuth();
+
     const handleOnChange = e => {
         const field = e.target.name;
         const value = e.target.value;
@@ -17,19 +20,21 @@ const Register = () => {
     }
     const handleLogin = e => {
         e.preventDefault()
-        if(loginData.password !== loginData.passwordTwo){
+        if (loginData.password !== loginData.passwordTwo) {
             alert('Password did not same')
             return;
         }
+        registerUser(loginData.email, loginData.password);
     }
     return (
         <Container>
+
             <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
                 <Grid item xs={12} md={6}>
                     <Typography variant="h5" gutterBottom component="div">
                         Register
                     </Typography>
-                    <form onSubmit={handleLogin}>
+                    {!isLoading && <form onSubmit={handleLogin}>
                         <TextField id="standard-basic"
                             sx={{ width: '50%', m: 1 }}
                             label="Your Email"
@@ -51,12 +56,15 @@ const Register = () => {
                             name="passwordTwo"
                             onChange={handleOnChange}
                             variant="standard" />
-                        <Button variant="contained" type="submit" sx={{ width: '50%', m: 1 }}>Login</Button>
+                        <Button variant="contained" type="submit" sx={{ width: '50%', m: 1 }}>Register</Button>
                         <br />
                         <Link to="/login">
                             <Button>Already registerd? please Login</Button>
                         </Link>
-                    </form>
+                    </form>}
+                    {
+                        isLoading && <CircularProgress />
+                    }
                 </Grid>
                 <Grid item xs={12} md={6}>
                     <img style={{ width: '80%' }} src={loginImg} alt="" />

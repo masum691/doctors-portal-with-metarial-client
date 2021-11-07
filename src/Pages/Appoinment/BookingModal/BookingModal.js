@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Backdrop from '@mui/material/Backdrop';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
@@ -6,6 +6,7 @@ import Fade from '@mui/material/Fade';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import { Button } from '@mui/material';
+import useAuth from '../../../hooks/useAuth';
 
 const style = {
     position: 'absolute',
@@ -21,8 +22,25 @@ const style = {
 
 const BookingModal = ({ open, handleClose, booking, date }) => {
     const { name, time } = booking;
+    const {user} = useAuth();
+    const initialInfo = {patientName: user.displayName, email: user.email, phone: ''}
+    const [bookingInfo, setBookingInfo] = useState(initialInfo);
+    const handleOnBlur = e => {
+        const field = e.target.name;
+        const value = e.target.value;
+        const newInfo = {...bookingInfo};
+        newInfo[field] = value;
+        setBookingInfo(newInfo)
+    }
     const handleSubmit = e => {
         alert('Submit successfully')
+        const appoinment = {
+            ...bookingInfo,
+            time,
+            serviceName: name,
+            date: date.toLocalDateString()
+        }
+        console.log(appoinment)
         handleClose()
         e.preventDefault()
     }
@@ -55,18 +73,24 @@ const BookingModal = ({ open, handleClose, booking, date }) => {
                         <TextField
                         sx={{width: '100%', m:1}}
                         label="Your name"
+                        onBlur={handleOnBlur}
+                        name="patientName"
                         id="outlined-size-small"
                         size="small"
                         />
                         <TextField
                         sx={{width: '100%', m:1}}
                         label="Your email"
+                        name="email"
+                        onBlur={handleOnBlur}
                         id="outlined-size-small"
                         size="small"
                         />
                         <TextField
                         sx={{width: '100%', m:1}}
                         label="Phone number"
+                        name="phone"
+                        onBlur={handleOnBlur}
                         id="outlined-size-small"
                         size="small"
                         />

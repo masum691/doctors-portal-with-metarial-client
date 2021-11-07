@@ -1,4 +1,4 @@
-import { Container, Grid, Button, CircularProgress, LinearProgress, Alert } from '@mui/material';
+import { Container, Grid, Button, CircularProgress, Alert } from '@mui/material';
 import React, { useState } from 'react';
 import loginImg from '../../../../images/login.png'
 import Typography from '@mui/material/Typography';
@@ -36,6 +36,12 @@ const Register = () => {
                         Register
                     </Typography>
                     {!isLoading && <form onSubmit={handleLogin}>
+                        <TextField id="standard-basic"
+                            sx={{ width: '50%', m: 1 }}
+                            label="Your Name"
+                            name="name"
+                            onChange={handleOnChange}
+                            variant="standard" />
                         <TextField id="standard-basic"
                             sx={{ width: '50%', m: 1 }}
                             label="Your Email"

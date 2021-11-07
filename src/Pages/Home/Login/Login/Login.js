@@ -7,7 +7,7 @@ import { Link, useLocation, useHistory } from 'react-router-dom';
 import useAuth from '../../../../hooks/useAuth';
 
 const Login = () => {
-    const [loginData, setLoginData] = useState({});
+    const [loginData, setLoginData, signInUsingGoogle] = useState({});
     const {user, isLoading, loginUser, error} = useAuth();
     const location = useLocation()
     const history = useHistory();
@@ -23,6 +23,9 @@ const Login = () => {
     const handleLogin = e => {
         loginUser(loginData.email, loginData.password, location, history)
         e.preventDefault()
+    }
+    const handleGoogle = () => {
+        signInUsingGoogle(location, history)
     }
     return (
         <Container>
@@ -52,6 +55,7 @@ const Login = () => {
                             <Button>Are you new user? please Register</Button>
                         </Link>
                     </form>
+                    <Button onClick={handleGoogle}>Login using google</Button>
                     {
                         isLoading && <CircularProgress color="secondary" />
                     }

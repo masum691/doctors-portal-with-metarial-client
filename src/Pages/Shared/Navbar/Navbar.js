@@ -11,7 +11,7 @@ import './Navbar.css'
 import useAuth from '../../../hooks/useAuth';
 
 const Navbar = () => {
-  const {user, logOut} = useAuth();
+  const { user, logOut } = useAuth();
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -25,9 +25,9 @@ const Navbar = () => {
           >
             <MenuIcon />
           </IconButton>
-            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              Doctors Portal
-            </Typography>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            Doctors Portal
+          </Typography>
           <Link to="/home">
             <Button color="inherit">Home</Button>
           </Link>
@@ -36,11 +36,16 @@ const Navbar = () => {
           </Link>
           {
             user?.displayName ?
+            <Box>
+              <Link to="/dashboard">
+            <Button color="inherit">Dashboard</Button>
             <Button onClick={logOut} color="inherit">Logout</Button>
-          :
-          <Link to="/login">
-            <Button color="inherit">Login</Button>
           </Link>
+            </Box>
+              :
+              <Link to="/login">
+                <Button color="inherit">Login</Button>
+              </Link>
           }
         </Toolbar>
       </AppBar>

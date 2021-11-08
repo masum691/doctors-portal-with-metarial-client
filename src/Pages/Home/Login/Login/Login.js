@@ -62,11 +62,9 @@ const Login = () => {
                     }
                     {
                         user?.displayName && <Alert severity="success">User added successfully</Alert>
-
                     }
                     {
                         error && <Alert severity="error">{error}</Alert>
-
                     }
                 </Grid>
                 <Grid item xs={12} md={6}>

@@ -87,6 +87,7 @@ const BookingModal = ({ open, handleClose, booking, date, setBookingSuccess }) =
                         <TextField
                         sx={{width: '100%', m:1}}
                         label="Your name"
+                        defaultValue={user.displayName}
                         onBlur={handleOnBlur}
                         name="patientName"
                         id="outlined-size-small"
@@ -95,6 +96,7 @@ const BookingModal = ({ open, handleClose, booking, date, setBookingSuccess }) =
                         <TextField
                         sx={{width: '100%', m:1}}
                         label="Your email"
+                        defaultValue={user?.email}
                         name="email"
                         onBlur={handleOnBlur}
                         id="outlined-size-small"
